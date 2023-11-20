@@ -15,11 +15,22 @@ import ChatApp from "./ChatApp";
 import SignInSide from "../components/SingInSide";
 import { useUserContext } from "../context/UserContext";
 import { MagicMotion } from "react-magic-motion";
+import efren from "../assets/efren.jpg";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function ChatContent() {
   const { user } = useUserContext;
+
+  const estiloEnLinea = {
+    background: "rgba(255, 255, 255, 0.22)",
+    borderRadius: "16px",
+    boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+    backdropFilter: "blur(3.7px)",
+    WebkitBackdropFilter: "blur(3.7px)",
+    border: "1px solid rgba(255, 255, 255, 0.53)",
+  };
+
   return (
     <>
       {user == false ? (
@@ -33,8 +44,7 @@ export default function ChatContent() {
             sm={4}
             md={7}
             sx={{
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1503149779833-1de50ebe5f8a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+              backgroundImage: `url(${efren})`,
               backgroundRepeat: "no-repeat",
               backgroundColor: (t) =>
                 t.palette.mode === "light"

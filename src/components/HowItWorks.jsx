@@ -3,7 +3,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
 import anaPsyco from "../assets/Absolute_Reality_v16_mujer_joven_psicologa_feliz_con_fondo_bl_1.jpg";
 import { Link, animateScroll as scroll } from "react-scroll";
-export const HowItWorks = () => {
+export const HowItWorks = ({ video, texto, titulo }) => {
   return (
     <>
       <Container name="about">
@@ -17,36 +17,32 @@ export const HowItWorks = () => {
             marginBottom: "5rem",
           }}
         >
-          <Grid item xs={12} md={6}>
-            <Box
-              component="img"
-              alt="The house from the offer."
-              src={anaPsyco}
-              sx={{
-                width: "300px",
-                height: "350px",
-                borderRadius: "3%",
-                imageRendering: "pixelated",
-                objectFit: "cover",
-                objectPosition: "center",
-              }}
-            />
+          <Grid item xs={12}>
+            <iframe
+              width="450"
+              height="300"
+              src={video}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
           </Grid>
-          <Grid item xs={12} md={6}>
+
+          <Grid item xs={12}>
             <Typography
               variant="h3"
               sx={{
                 fontFamily: "poppins",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
+                fontWeight: 400,
+
                 color: "inherit",
-                textDecoration: "none",
-                textAlign: "justify",
-                fontSize: "2rem",
+
+                textAlign: "left",
+                fontSiz0: "1.5rem",
               }}
             >
-              En Sanity Support, entendemos que tu salud mental es una
-              prioridad.
+              {titulo}
             </Typography>
             <Typography
               variant="h5"
@@ -57,12 +53,10 @@ export const HowItWorks = () => {
                 color: "inherit",
                 textDecoration: "none",
                 textAlign: "justify",
-                fontSize: "1.4rem",
+                fontSize: "1.2rem",
               }}
             >
-              Nuestra plataforma ofrece una forma única y accesible de buscar
-              orientación profesional. Conoce a Ana, tu psicóloga virtual, lista
-              para guiarte en tu viaje hacia el bienestar emocional.
+              {texto}
             </Typography>
           </Grid>
         </Grid>

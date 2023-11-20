@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import SpaIcon from "@mui/icons-material/Spa";
 import { Link, animateScroll as scroll } from "react-scroll";
 import { useNavigate, useLocation } from "react-router-dom";
+import PermPhoneMsgIcon from "@mui/icons-material/PermPhoneMsg";
 
 const pages = ["Home", "About", "Chat"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -57,7 +58,7 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <SpaIcon
+          <PermPhoneMsgIcon
             sx={{
               display: { xs: "none", md: "flex" },
               mr: 1,
@@ -76,14 +77,14 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+
               color: "inherit",
               textDecoration: "none",
               cursor: "pointer",
             }}
             onClick={() => handleNavigate(`/`)}
           >
-            Sanity Support
+            Efrenis support
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -130,7 +131,7 @@ function ResponsiveAppBar() {
                     display: { xs: "none", md: "flex" },
                     fontFamily: "roboto",
                     fontWeight: 300,
-                    letterSpacing: ".3rem",
+
                     color: "inherit",
                     textDecoration: "none",
                     "&:hover": {
@@ -147,17 +148,14 @@ function ResponsiveAppBar() {
                     display: { xs: "none", md: "flex" },
                     fontFamily: "roboto",
                     fontWeight: 300,
-                    letterSpacing: ".3rem",
+
                     color: "inherit",
                     textDecoration: "none",
                     "&:hover": {
                       color: "primary.main",
                     },
                   }}
-                  onClick={() => handleNavigate(`/chat`)}
-                >
-                  Chat
-                </span>
+                ></span>
               </MenuItem>
             </Menu>
           </Box>
@@ -180,7 +178,7 @@ function ResponsiveAppBar() {
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+
               color: "inherit",
               textDecoration: "none",
 
@@ -190,7 +188,7 @@ function ResponsiveAppBar() {
             }}
             onClick={() => handleNavigate(`/`)}
           >
-            Sanity Support
+            Efrenis support
           </Typography>
           {location.pathname !== "/chat" && location.pathname !== "/login" && (
             <Box
@@ -221,7 +219,7 @@ function ResponsiveAppBar() {
                     display: { xs: "none", md: "flex" },
                     fontFamily: "roboto",
                     fontWeight: 300,
-                    letterSpacing: ".3rem",
+
                     color: "inherit",
                     textDecoration: "none",
                     "&:hover": {
@@ -234,7 +232,7 @@ function ResponsiveAppBar() {
                   Home
                 </Typography>
               </Link>
-              <Link
+              {/* <Link
                 activeClass="active"
                 to="about"
                 spy={true}
@@ -291,7 +289,7 @@ function ResponsiveAppBar() {
                 >
                   Testimonios
                 </Typography>
-              </Link>
+              </Link> */}
               <Link
                 activeClass="active"
                 to="testimonials"
@@ -311,7 +309,7 @@ function ResponsiveAppBar() {
                     display: { xs: "none", md: "flex" },
                     fontFamily: "roboto",
                     fontWeight: 300,
-                    letterSpacing: ".3rem",
+
                     color: "inherit",
                     textDecoration: "none",
                     "&:hover": {
@@ -319,10 +317,7 @@ function ResponsiveAppBar() {
                       cursor: "pointer",
                     },
                   }}
-                  onClick={() => handleNavigate(`/chat`)}
-                >
-                  Chat
-                </Typography>
+                ></Typography>
               </Link>
             </Box>
           )}

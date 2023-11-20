@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useUserContext } from "../context/UserContext";
-const api = `https://efreniswsbot.azurewebsites.net//api/get-message?message=`;
+const api = `http://localhost:3000/api/get-message?message=`;
 import { useNavigate } from "react-router-dom";
 
 function ChatApp() {
@@ -42,7 +42,7 @@ function ChatApp() {
         const data = await response.json();
         const botMessage = {
           text: data,
-          author: "Ana✨",
+          author: "EfrenisSoft✨",
         };
         const newMessagesWithBotResponse = [...newMessages, botMessage];
         setMessages(newMessagesWithBotResponse);
@@ -53,6 +53,55 @@ function ChatApp() {
       }
     }
   };
+  // Función para limpiar mensajes después de 24 horas
+  const cleanOldMessages = () => {
+    const twentyFourHoursAgo = new Date().getTime() - 24 * 60 * 60 * 1000;
+
+    const filteredMessages = messages.filter((message) => {
+      const messageTimestamp = new Date(message.timestamp).getTime();
+      return messageTimestamp >= twentyFourHoursAgo;
+    });
+
+    setMessages(filteredMessages);
+
+    // Actualizar la marca de tiempo de la última limpieza
+    localStorage.setItem("lastCleanupTimestamp", new Date().getTime());
+  };
+
+  // Guardar en localStorage
+  useEffect(() => {
+    if (messages.length > 0) {
+      localStorage.setItem("chatMessages", JSON.stringify(messages));
+
+      // Verificar y limpiar mensajes después de 24 horas
+      const lastCleanupTimestamp = localStorage.getItem("lastCleanupTimestamp");
+      if (
+        !lastCleanupTimestamp ||
+        new Date().getTime() - parseInt(lastCleanupTimestamp) >
+          24 * 60 * 60 * 1000
+      ) {
+        cleanOldMessages();
+      }
+    }
+  }, [messages]);
+
+  // Cargar desde localStorage
+  useEffect(() => {
+    const storedMessages = localStorage.getItem("chatMessages");
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+
+      // Verificar y limpiar mensajes después de 24 horas al cargar
+      const lastCleanupTimestamp = localStorage.getItem("lastCleanupTimestamp");
+      if (
+        !lastCleanupTimestamp ||
+        new Date().getTime() - parseInt(lastCleanupTimestamp) >
+          24 * 60 * 60 * 1000
+      ) {
+        cleanOldMessages();
+      }
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -147,7 +196,7 @@ function ChatApp() {
                 >
                   <ListItemText
                     primaryTypographyProps={{ style: { fontWeight: "bold" } }}
-                    primary="Ana✨"
+                    primary="EfrenisSoft✨"
                     secondary="Escribiendo..."
                   />
                 </Box>

@@ -1,16 +1,13 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
-import ResponsiveAppBar from "../components/ResponsiveAppBar";
+
 import { Herosection } from "../components/Herosection";
-import { HowItWorks } from "../components/HowItWorks";
+
 import ScorllToTopButton from "../components/atoms/ScrollToTopButton";
-import ChatApp from "./ChatApp";
-import { SignLanguage } from "@mui/icons-material";
-import SignInSide from "../components/SingInSide";
-import { About } from "../components/About";
-import TestimonialsSection from "../components/TestimonialsSection";
-import Newsletter from "../components/atoms/Newsletter";
+
 import Footer from "../components/Footer";
+import CuztomizedTimeline from "../components/CuztomizedTimeline";
+import CustomH1 from "../components/atoms/CustomH1";
 
 export const Home = () => {
   return (
@@ -24,9 +21,9 @@ export const Home = () => {
         }}
       >
         <Herosection />
-        <HowItWorks />
-        <About />
-        <TestimonialsSection />
+        <CustomH1 />
+        <CuztomizedTimeline />
+
         <Footer />
         <ScorllToTopButton />
       </Container>
